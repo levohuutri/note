@@ -1,3 +1,3 @@
-cd /tmp && wget https://build.geoserver.org/geoserver/2.19.x/ext-latest/geoserver-2.19-SNAPSHOT-wcs2_0-eo-plugin.zip && \
-unzip geoserver-2.19-SNAPSHOT-wcs2_0-eo-plugin.zip -d geoserver-2.19-SNAPSHOT-wcs2_0-eo-plugin && \
-mv /tmp/geoserver-2.19-SNAPSHOT-wcs2_0-eo-plugin/* /usr/local/tomcat/webapps/geoserver/WEB-INF/lib
+cd /tmp && wget https://build.geoserver.org/geoserver/2.19.x/ext-2022-12-28/geoserver-2.19-SNAPSHOT-vectortiles-plugin.zip && \
+unzip geoserver-2.19-SNAPSHOT-vectortiles-plugin.zip -d geoserver-2.19-SNAPSHOT-vectortiles-plugin && \
+mv /tmp/geoserver-2.19-SNAPSHOT-vectortiles-plugin/* /usr/local/tomcat/webapps/geoserver/WEB-INF/lib
