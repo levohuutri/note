@@ -1,3 +1,3 @@
-cd /tmp && wget https://build.geoserver.org/geoserver/2.19.x/ext-2022-12-28/geoserver-2.19-SNAPSHOT-vectortiles-plugin.zip && \
-unzip geoserver-2.19-SNAPSHOT-vectortiles-plugin.zip -d geoserver-2.19-SNAPSHOT-vectortiles-plugin && \
-mv /tmp/geoserver-2.19-SNAPSHOT-vectortiles-plugin/* /usr/local/tomcat/webapps/geoserver/WEB-INF/lib
+cd /tmp && wget https://master.dl.sourceforge.net/project/geoserver/GeoServer/2.19.6/extensions/geoserver-2.19.6-vectortiles-plugin.zip?viasf=1 && \
+unzip geoserver-2.19.6-vectortiles-plugin.zip -d geoserver-2.19.6-vectortiles-plugin && \
+mv /tmp/geoserver-2.19.6-vectortiles-plugin/* /usr/local/tomcat/webapps/geoserver/WEB-INF/lib
