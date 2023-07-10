@@ -41,6 +41,7 @@ geojson.features[0].geometry.coordinates.push(coords);
 }
 
 async function getChild() {
+  var parentId = 570;
   var request = fetch("http://maps.vietbando.com/maps/ajaxpro/AJLocationSearch,Vietbando.Web.Library.ashx", {
   "headers": {
     "accept": "*/*",
@@ -52,18 +53,18 @@ async function getChild() {
   },
   "referrer": "http://maps.vietbando.com/maps/?t=1&st=0&sk=Th%E1%BB%8B+X%C3%A3+Sa+Pa,+T%E1%BB%89nh+L%C3%A0o+Cai&l=12&kv=22.3632844,103.924140",
   "referrerPolicy": "strict-origin-when-cross-origin",
-  "body": "{\"ParentID\":570}",
+  "body": "{\"ParentID\":"+parentId+"}",
   "method": "POST",
   "mode": "cors",
   "credentials": "include"
 });
   var response = await request;
-  console.log(response);
-  var data = await response.json();
+  var listphuong = []; // response 
   let result = {}; listPhuong.forEach(async (item) => {result[item[1]] = await getData({id: item[0], level: 27}); result[item[1]].props = {ma: item[0], ten: item[1]}})
-  data = {
+  var data = {
     "type": "FeatureCollection",
     "features": []
   }
   Object.keys(result).forEach(key => {data.features.push({...result[key].features[0], ...{properties: {...result[key].props}}})})
+  JSON.stringify(data)
 }
