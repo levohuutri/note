@@ -39,3 +39,30 @@ geojson.features[0].geometry.coordinates.push(coords);
   console.log(JSON.stringify(geojson));
   return geojson;
 }
+
+async function getChild() {
+  var request = fetch("http://maps.vietbando.com/maps/ajaxpro/AJLocationSearch,Vietbando.Web.Library.ashx", {
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "en-US,en;q=0.9,vi;q=0.8",
+    "cache-control": "no-cache",
+    "content-type": "text/plain; charset=UTF-8",
+    "pragma": "no-cache",
+    "x-ajaxpro-method": "GetChild"
+  },
+  "referrer": "http://maps.vietbando.com/maps/?t=1&st=0&sk=Th%E1%BB%8B+X%C3%A3+Sa+Pa,+T%E1%BB%89nh+L%C3%A0o+Cai&l=12&kv=22.3632844,103.924140",
+  "referrerPolicy": "strict-origin-when-cross-origin",
+  "body": "{\"ParentID\":570}",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+});
+  var response = await request;
+  console.log(response);
+  var data = await response.json();
+  data = {
+    "type": "FeatureCollection",
+    "features": []
+  }
+  Object.keys(result).forEach(key => {data.features.push({...result[key].features[0], ...{properties: {ten: key}}})})
+}
