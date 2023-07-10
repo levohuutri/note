@@ -60,9 +60,10 @@ async function getChild() {
   var response = await request;
   console.log(response);
   var data = await response.json();
+  let result = {}; listPhuong.forEach(async (item) => {result[item[1]] = await getData({id: item[0], level: 27}); result[item[1]].props = {ma: item[0], ten: item[1]}})
   data = {
     "type": "FeatureCollection",
     "features": []
   }
-  Object.keys(result).forEach(key => {data.features.push({...result[key].features[0], ...{properties: {ten: key}}})})
+  Object.keys(result).forEach(key => {data.features.push({...result[key].features[0], ...{properties: {...result[key].props}}})})
 }
