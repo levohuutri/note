@@ -36,6 +36,7 @@ var geojson = {
 }
 
 geojson.features[0].geometry.coordinates.push(coords);
+  console.log('Crawling', id);
   return geojson;
 }
 
