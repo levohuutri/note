@@ -40,7 +40,7 @@ geojson.features[0].geometry.coordinates.push(coords);
   return geojson;
 }
 
-async function getChild(parentId) {
+async function getChild(parentId, filename) {
   var request = fetch("http://maps.vietbando.com/maps/ajaxpro/AJLocationSearch,Vietbando.Web.Library.ashx", {
   "headers": {
     "accept": "*/*",
@@ -85,4 +85,9 @@ async function getChild(parentId) {
     })
   })
   console.log(JSON.stringify(data))
+  var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
+  var dlAnchorElem = document.getElementById('downloadAnchorElem');
+  dlAnchorElem.setAttribute("href",     dataStr     );
+  dlAnchorElem.setAttribute("download", filename);
+  dlAnchorElem.click();
 }
