@@ -36,7 +36,6 @@ var geojson = {
 }
 
 geojson.features[0].geometry.coordinates.push(coords);
-  console.log(JSON.stringify(geojson));
   return geojson;
 }
 
@@ -84,5 +83,5 @@ async function getChild(parentId) {
       ...{properties: {...result[key].props}}
     })
   })
-  console.log('data', JSON.stringify(data))
+  console.log(JSON.stringify(data))
 }
