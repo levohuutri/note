@@ -85,9 +85,14 @@ async function getChild(parentId, filename) {
     })
   })
   console.log(JSON.stringify(data))
-  var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
-  var dlAnchorElem = document.getElementById('downloadAnchorElem');
-  dlAnchorElem.setAttribute("href",     dataStr     );
-  dlAnchorElem.setAttribute("download", filename);
-  dlAnchorElem.click();
+  function downloadObjectAsJson(exportObj, exportName){
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj));
+    var downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href",     dataStr);
+    downloadAnchorNode.setAttribute("download", exportName);
+    document.body.appendChild(downloadAnchorNode); // required for firefox
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+  }
+  downloadObjectAsJson(data, filename);
 }
