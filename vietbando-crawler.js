@@ -40,8 +40,7 @@ geojson.features[0].geometry.coordinates.push(coords);
   return geojson;
 }
 
-async function getChild() {
-  var parentId = 570;
+async function getChild(parentId) {
   var request = fetch("http://maps.vietbando.com/maps/ajaxpro/AJLocationSearch,Vietbando.Web.Library.ashx", {
   "headers": {
     "accept": "*/*",
@@ -59,12 +58,26 @@ async function getChild() {
   "credentials": "include"
 });
   var response = await request;
-  var listphuong = []; // response 
-  let result = {}; listPhuong.forEach(async (item) => {result[item[1]] = await getData({id: item[0], level: 27}); result[item[1]].props = {ma: item[0], ten: item[1]}})
+  var data = await response.text();
+  data = '[[' + data.split("]],[[")[1].replace(')}', '');
+  var listphuong = JSON.parse(data); // response 
+  let result = {}; 
+  let promises = [];
+  listphuong.forEach(
+    item => {
+      let pros = async () => {
+        result[item[1]] = await getData({id: item[0], level: 27}); 
+        result[item[1]].props = {ma: item[0], ten: item[1]}
+      }
+      promises.push(pros());
+    }
+  )
   var data = {
-    "type": "FeatureCollection",
-    "features": []
-  }
+      "type": "FeatureCollection",
+      "features": []
+    }
+  
+  await Promise.all(promises);
   Object.keys(result).forEach(key => {data.features.push({...result[key].features[0], ...{properties: {...result[key].props}}})})
-  JSON.stringify(data)
+  console.log(JSON.stringify(data))
 }
