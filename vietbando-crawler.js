@@ -79,5 +79,5 @@ async function getChild(parentId) {
   
   await Promise.all(promises);
   Object.keys(result).forEach(key => {data.features.push({...result[key].features[0], ...{properties: {...result[key].props}}})})
-  console.log(JSON.stringify(data))
+  console.log('data', JSON.stringify(data))
 }
