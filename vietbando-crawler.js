@@ -96,3 +96,8 @@ async function getChild(parentId, filename) {
   }
   downloadObjectAsJson(data, filename);
 }
+
+
+async function getAll() {
+  
+}
