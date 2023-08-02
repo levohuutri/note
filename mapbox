@@ -1,1 +1,15 @@
 - Custom Style of Feature: https://docs.mapbox.com/mapbox-gl-js/example/hover-styles/
++ Sử dụng khai báo       
+        this._draw = new MapboxDraw({
+            displayControlsDefault: false,
+            userProperties: true // dùng thuộc tính này
+        });
++ Sample style:
+          "icon-image": [
+                'case',
+                ['==', ['get', 'user_class'], 'TLCInfraPClosure'],
+                'square_15',
+                ['==', ['get', 'user_class'], 'TLCInfraBoxCabinet'],
+                'circle_15',
+                'triangle_15', 
+            ],
