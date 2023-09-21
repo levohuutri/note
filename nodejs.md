@@ -1,0 +1,2 @@
+- node:internal/crypto/hash:68 this[kHandle] = new _Hash(algorithm, xofLen); Error: error:0308010C:digital envelope routines::unsupported
+-> export NODE_OPTIONS=--openssl-legacy-provider
